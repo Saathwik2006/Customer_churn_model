@@ -47,3 +47,27 @@ This project uses the **Telco Customer Churn** dataset to predict whether a cust
 | Yes          | 1,869 |     26.54% |
 
 The dataset is moderately imbalanced, with approximately **73% non-churn** and **27% churn** customers. This imbalance was considered during model evaluation by comparing multiple performance metrics, including Precision, Recall, and F1-score, rather than relying solely on Accuracy.
+
+
+# Data Preprocessing
+
+The Telco Customer Churn dataset was carefully preprocessed to ensure high-quality inputs for machine learning models.
+
+## Dataset Overview
+
+* **Rows:** 7,043
+* **Target Variable:** `Churn`
+* **Features:** Demographic, account, and service-related customer attributes.
+
+## Preprocessing Steps
+
+* Removed the unique identifier column (`customerID`) as it does not contribute to prediction.
+* Converted `TotalCharges` from object to numeric datatype.
+* Filled missing values in `TotalCharges` using the median.
+* Converted the target variable (`Churn`) into binary values (`0 = No`, `1 = Yes`).
+* Applied **Ordinal Encoding** to the `Contract` feature.
+* Applied **One-Hot Encoding** to all remaining nominal categorical features.
+* Standardized numerical features (`tenure`, `MonthlyCharges`, `TotalCharges`) using `StandardScaler`.
+* Created a separate unencoded dataset for CatBoost to preserve categorical features.
+* Performed an **80-20 train-test split** using `stratify` to maintain the original class distribution.
+* Used **5-Fold Cross Validation** to evaluate model generalization.
