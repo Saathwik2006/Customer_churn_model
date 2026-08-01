@@ -71,3 +71,21 @@ The Telco Customer Churn dataset was carefully preprocessed to ensure high-quali
 * Created a separate unencoded dataset for CatBoost to preserve categorical features.
 * Performed an **80-20 train-test split** using `stratify` to maintain the original class distribution.
 * Used **5-Fold Cross Validation** to evaluate model generalization.
+
+
+# Baseline Model Performance
+
+The following baseline models were trained using default or near-default hyperparameters.
+
+| Model               | Accuracy | Precision |     Recall |   F1 Score | R² Score | Mean CV Accuracy |
+| ------------------- | -------: | --------: | ---------: | ---------: | -------: | ---------------: |
+| Logistic Regression |   0.8055 |    0.6572 | **0.5588** | **0.6040** |   0.0026 |       **0.8046** |
+| Random Forest       |   0.7807 |    0.6117 |     0.4759 |     0.5353 |  -0.1248 |           0.7883 |
+| XGBoost             |   0.7779 |    0.5950 |     0.5107 |     0.5496 |  -0.1393 |           0.7913 |
+| CatBoost            |   0.7999 |    0.6523 |     0.5267 |     0.5828 |  -0.0265 |           0.7860 |
+
+### Observation
+
+* Logistic Regression provided the strongest baseline performance.
+* Tree-based ensemble methods required hyperparameter tuning to unlock their full potential.
+* CatBoost performed competitively despite requiring no categorical encoding.
