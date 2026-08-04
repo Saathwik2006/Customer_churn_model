@@ -89,3 +89,23 @@ The following baseline models were trained using default or near-default hyperpa
 * Logistic Regression provided the strongest baseline performance.
 * Tree-based ensemble methods required hyperparameter tuning to unlock their full potential.
 * CatBoost performed competitively despite requiring no categorical encoding.
+
+
+# Tuned Model Performance
+
+| Model                 |   Accuracy |  Precision |     Recall |   F1 Score |   R² Score | Mean CV Accuracy |
+| --------------------- | ---------: | ---------: | ---------: | ---------: | ---------: | ---------------: |
+| Logistic Regression   |     0.8055 |     0.6572 | **0.5588** | **0.6040** |     0.0026 |       **0.8046** |
+| Random Forest (Tuned) | **0.8091** | **0.6829** |     0.5241 |     0.5930 | **0.0208** |           0.8031 |
+| XGBoost (Tuned)       |     0.8070 |     0.6747 |     0.5267 |     0.5916 |     0.0099 |           0.8042 |
+| CatBoost (Tuned)      |     0.8062 |     0.6724 |     0.5267 |     0.5907 |     0.0063 |                — |
+
+## Balanced Logistic Regression (Experiment)
+
+| Model                                           | Accuracy | Precision |     Recall |   F1 Score |
+| ----------------------------------------------- | -------: | --------: | ---------: | ---------: |
+| Logistic Regression (`class_weight="balanced"`) |   0.7381 |    0.5043 | **0.7834** | **0.6136** |
+
+This additional experiment demonstrates the trade-off between overall accuracy and the ability to correctly identify churning customers.
+
+
