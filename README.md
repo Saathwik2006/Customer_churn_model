@@ -109,3 +109,27 @@ The following baseline models were trained using default or near-default hyperpa
 This additional experiment demonstrates the trade-off between overall accuracy and the ability to correctly identify churning customers.
 
 
+# Conclusion
+
+This project explored customer churn prediction using multiple supervised machine learning algorithms on the Telco Customer Churn dataset.
+
+Comprehensive preprocessing, including missing value handling, categorical encoding, feature scaling, and train-test stratification, produced a clean dataset suitable for model training.
+
+Four classification algorithms were evaluated:
+
+* Logistic Regression
+* Random Forest
+* XGBoost
+* CatBoost
+
+Each ensemble model was further optimized through manual hyperparameter tuning.
+
+### Key Results
+
+* Random Forest achieved the **highest overall accuracy (80.91%)** after tuning.
+* Logistic Regression produced the **highest recall among the standard models** and remained an exceptionally strong baseline.
+* CatBoost effectively handled categorical features without requiring one-hot encoding while delivering competitive performance.
+* XGBoost showed noticeable improvement after tuning and achieved results comparable to Random Forest.
+* Using **class-weight balancing** in Logistic Regression significantly increased churn recall, demonstrating an important trade-off between maximizing overall accuracy and identifying customers likely to churn.
+
+Overall, hyperparameter tuning improved the predictive performance of all ensemble models. Among the evaluated approaches, **Random Forest emerged as the best-performing model**, offering the strongest balance between accuracy, precision, and generalization, while **Balanced Logistic Regression** is a compelling choice when maximizing churn detection is the primary business objective.
