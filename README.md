@@ -73,63 +73,34 @@ The Telco Customer Churn dataset was carefully preprocessed to ensure high-quali
 * Used **5-Fold Cross Validation** to evaluate model generalization.
 
 
-# Baseline Model Performance
+### Model Performance
 
-The following baseline models were trained using default or near-default hyperparameters.
+| Model | Accuracy | Precision | Recall | F1 Score | ROC-AUC | CV Accuracy |
+|---|---:|---:|---:|---:|---:|---:|
+| **Logistic Regression** | 80.55% | 65.72% | **55.88%** | **60.40%** | — | **80.46%** |
+| **Random Forest** | 80.48% | **69.41%** | 47.33% | 56.28% | 83.99% | 79.97% |
+| **XGBoost** | **80.70%** | 67.47% | 52.67% | 59.16% | **84.68%** | 80.42% |
+| **CatBoost** | 80.62% | 67.24% | 52.67% | 59.07% | — | 79.79% |
+| **ANN (DNN)** | 79.84% | 63.16% | 57.75% | 60.34% | 83.93% | — |
 
-| Model               | Accuracy | Precision |     Recall |   F1 Score | R² Score | Mean CV Accuracy |
-| ------------------- | -------: | --------: | ---------: | ---------: | -------: | ---------------: |
-| Logistic Regression |   0.8055 |    0.6572 | **0.5588** | **0.6040** |   0.0026 |       **0.8046** |
-| Random Forest       |   0.7807 |    0.6117 |     0.4759 |     0.5353 |  -0.1248 |           0.7883 |
-| XGBoost             |   0.7779 |    0.5950 |     0.5107 |     0.5496 |  -0.1393 |           0.7913 |
-| CatBoost            |   0.7999 |    0.6523 |     0.5267 |     0.5828 |  -0.0265 |           0.7860 |
+> **Note:** ROC-AUC was not calculated for Logistic Regression and CatBoost in the notebook, and CV accuracy was not calculated for the ANN. R² was excluded because it is not an appropriate metric for classification.
 
-### Observation
+### Confusion Matrices
 
-* Logistic Regression provided the strongest baseline performance.
-* Tree-based ensemble methods required hyperparameter tuning to unlock their full potential.
-* CatBoost performed competitively despite requiring no categorical encoding.
+| Model | True Negative | False Positive | False Negative | True Positive |
+|---|---:|---:|---:|---:|
+| **Logistic Regression** | 926 | 109 | 165 | 209 |
+| **Random Forest** | 957 | 78 | 197 | 177 |
+| **XGBoost** | 940 | 95 | 177 | 197 |
+| **CatBoost** | 939 | 96 | 177 | 197 |
+| **ANN (DNN)** | 909 | 126 | **158** | **216** |
 
+### Interesting Observations
 
-# Tuned Model Performance
-
-| Model                 |   Accuracy |  Precision |     Recall |   F1 Score |   R² Score | Mean CV Accuracy |
-| --------------------- | ---------: | ---------: | ---------: | ---------: | ---------: | ---------------: |
-| Logistic Regression   |     0.8055 |     0.6572 | **0.5588** | **0.6040** |     0.0026 |       **0.8046** |
-| Random Forest (Tuned) | **0.8091** | **0.6829** |     0.5241 |     0.5930 | **0.0208** |           0.8031 |
-| XGBoost (Tuned)       |     0.8070 |     0.6747 |     0.5267 |     0.5916 |     0.0099 |           0.8042 |
-| CatBoost (Tuned)      |     0.8062 |     0.6724 |     0.5267 |     0.5907 |     0.0063 |                — |
-
-## Balanced Logistic Regression (Experiment)
-
-| Model                                           | Accuracy | Precision |     Recall |   F1 Score |
-| ----------------------------------------------- | -------: | --------: | ---------: | ---------: |
-| Logistic Regression (`class_weight="balanced"`) |   0.7381 |    0.5043 | **0.7834** | **0.6136** |
-
-This additional experiment demonstrates the trade-off between overall accuracy and the ability to correctly identify churning customers.
-
-
-# Conclusion
-
-This project explored customer churn prediction using multiple supervised machine learning algorithms on the Telco Customer Churn dataset.
-
-Comprehensive preprocessing, including missing value handling, categorical encoding, feature scaling, and train-test stratification, produced a clean dataset suitable for model training.
-
-Four classification algorithms were evaluated:
-
-* Logistic Regression
-* Random Forest
-* XGBoost
-* CatBoost
-
-Each ensemble model was further optimized through manual hyperparameter tuning.
-
-### Key Results
-
-* Random Forest achieved the **highest overall accuracy (80.91%)** after tuning.
-* Logistic Regression produced the **highest recall among the standard models** and remained an exceptionally strong baseline.
-* CatBoost effectively handled categorical features without requiring one-hot encoding while delivering competitive performance.
-* XGBoost showed noticeable improvement after tuning and achieved results comparable to Random Forest.
-* Using **class-weight balancing** in Logistic Regression significantly increased churn recall, demonstrating an important trade-off between maximizing overall accuracy and identifying customers likely to churn.
-
-Overall, hyperparameter tuning improved the predictive performance of all ensemble models. Among the evaluated approaches, **Random Forest emerged as the best-performing model**, offering the strongest balance between accuracy, precision, and generalization, while **Balanced Logistic Regression** is a compelling choice when maximizing churn detection is the primary business objective.
+- **XGBoost achieved the highest accuracy (80.70%) and ROC-AUC (84.68%)**, making it the strongest overall model in this experiment.
+- **Random Forest achieved the highest precision (69.41%)**. However, its recall was only 47.33%, meaning it missed a relatively large number of actual churners.
+- **ANN achieved the highest recall (57.75%)**, correctly identifying **216 of 374 actual churners**. This can be valuable when the business priority is to identify as many potential churners as possible.
+- **Logistic Regression performed surprisingly well**, achieving 80.55% accuracy and the highest F1 score (60.40%) among the models tested.
+- The boosting models did **not dramatically outperform** the simpler models on this tabular dataset. All models achieved approximately **80% accuracy**.
+- Although the ANN had slightly lower accuracy than XGBoost, it achieved **higher recall (57.75% vs. 52.67%)**, making it potentially more suitable when missing a potential churner is more costly than generating some false positives.
+- The cross-validation accuracy of Logistic Regression, Random Forest, and XGBoost was close to their respective test accuracy, suggesting relatively consistent performance across the evaluation splits.
