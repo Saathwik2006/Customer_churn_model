@@ -1,4 +1,4 @@
-## Telco Customer Churn Prediction
+# Telco Customer Churn Prediction
 
 This project uses the **Telco Customer Churn** dataset to predict whether a customer is likely to discontinue their telecommunications service. Customer churn prediction enables businesses to identify at-risk customers and implement targeted retention strategies.
 
@@ -13,7 +13,7 @@ This project uses the **Telco Customer Churn** dataset to predict whether a cust
 | Target Variable | `Churn`                      |
 | Task            | Binary Classification        |
 
-## Feature Description
+### Feature Description
 
 | Feature          | Description                                               |
 | ---------------- | --------------------------------------------------------- |
@@ -39,7 +39,7 @@ This project uses the **Telco Customer Churn** dataset to predict whether a cust
 | TotalCharges     | Total amount charged to the customer                      |
 | **Churn**        | Whether the customer left the company (Target Variable)   |
 
-## Target Distribution
+### Target Distribution
 
 | Churn Status | Count | Percentage |
 | ------------ | ----: | ---------: |
@@ -49,17 +49,17 @@ This project uses the **Telco Customer Churn** dataset to predict whether a cust
 The dataset is moderately imbalanced, with approximately **73% non-churn** and **27% churn** customers. This imbalance was considered during model evaluation by comparing multiple performance metrics, including Precision, Recall, and F1-score, rather than relying solely on Accuracy.
 
 
-# Data Preprocessing
+## Data Preprocessing
 
 The Telco Customer Churn dataset was carefully preprocessed to ensure high-quality inputs for machine learning models.
 
-## Dataset Overview
+### Dataset Overview
 
 * **Rows:** 7,043
 * **Target Variable:** `Churn`
 * **Features:** Demographic, account, and service-related customer attributes.
 
-## Preprocessing Steps
+### Preprocessing Steps
 
 * Removed the unique identifier column (`customerID`) as it does not contribute to prediction.
 * Converted `TotalCharges` from object to numeric datatype.
@@ -73,7 +73,7 @@ The Telco Customer Churn dataset was carefully preprocessed to ensure high-quali
 * Used **5-Fold Cross Validation** to evaluate model generalization.
 
 
-### Model Performance
+## Model Performance
 
 | Model | Accuracy | Precision | Recall | F1 Score | ROC-AUC | CV Accuracy |
 |---|---:|---:|---:|---:|---:|---:|
@@ -95,7 +95,7 @@ The Telco Customer Churn dataset was carefully preprocessed to ensure high-quali
 | **CatBoost** | 939 | 96 | 177 | 197 |
 | **ANN (DNN)** | 909 | 126 | **158** | **216** |
 
-### Interesting Observations
+## Interesting Observations
 
 - **XGBoost achieved the highest accuracy (80.70%) and ROC-AUC (84.68%)**, making it the strongest overall model in this experiment.
 - **Random Forest achieved the highest precision (69.41%)**. However, its recall was only 47.33%, meaning it missed a relatively large number of actual churners.
