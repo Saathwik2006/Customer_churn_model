@@ -1,4 +1,4 @@
-### Telco Customer Churn Prediction
+## Telco Customer Churn Prediction
 
 This project uses the **Telco Customer Churn** dataset to predict whether a customer is likely to discontinue their telecommunications service. Customer churn prediction enables businesses to identify at-risk customers and implement targeted retention strategies.
 
