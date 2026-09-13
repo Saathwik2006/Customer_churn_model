@@ -1,7 +1,25 @@
 # Telco Customer Churn Prediction
 
 This project uses the **Telco Customer Churn** dataset to predict whether a customer is likely to discontinue their telecommunications service. Customer churn prediction enables businesses to identify at-risk customers and implement targeted retention strategies.
-
+## Customer_Churn_Prediction
+│
+├── README.md                 # Project overview + workflow + results
+├── churn1.ipynb              # Model training & analysis
+├── predict.py                # Interactive prediction
+├── requirements.txt          # Required libraries
+│
+├── data/
+│   └── telco_churn.csv       # Dataset
+│
+└── models/
+    ├── lr_model.pkl          # Logistic Regression
+    ├── rf_model.pkl          # Random Forest
+    ├── xgb_model.pkl         # XGBoost
+    ├── catboost_model.pkl    # CatBoost
+    ├── scaler.pkl            # Numerical scaler
+    ├── feature_columns.pkl   # OHE feature columns
+    └── ann_model.keras       # ANN model
+    
 ## Dataset Information
 
 | Attribute       | Value                        |
@@ -104,3 +122,15 @@ The Telco Customer Churn dataset was carefully preprocessed to ensure high-quali
 - The boosting models did **not dramatically outperform** the simpler models on this tabular dataset. All models achieved approximately **80% accuracy**.
 - Although the ANN had slightly lower accuracy than XGBoost, it achieved **higher recall (57.75% vs. 52.67%)**, making it potentially more suitable when missing a potential churner is more costly than generating some false positives.
 - The cross-validation accuracy of Logistic Regression, Random Forest, and XGBoost was close to their respective test accuracy, suggesting relatively consistent performance across the evaluation splits.
+
+
+## Workflow
+
+- Data Cleaning
+- EDA
+- Feature Preprocessing
+- Train/Test Split
+- Model Training
+- Model Evaluation
+- Save Trained Models
+- Interactive Prediction using `predict.py`
