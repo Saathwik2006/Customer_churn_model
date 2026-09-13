@@ -14,7 +14,7 @@ scaler = joblib.load("models/scaler.pkl")
 feature_columns = joblib.load("models/feature_columns.pkl")
 
 # Load ANN
-ann = load_model("models/ann_model.keras")
+model = load_model("models/ann_model.keras")
 
 def predict_churn():
 
