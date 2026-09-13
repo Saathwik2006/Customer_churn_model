@@ -23,7 +23,47 @@ Customer_Churn_Prediction/
     ├── scaler.pkl
     ├── feature_columns.pkl
     └── ann_model.keras
-```    
+```
+
+## Project Workflow
+
+```text
+Telco Customer Dataset
+          ↓
+   Data Preprocessing
+          ↓
+    Exploratory Data
+       Analysis
+          ↓
+    Feature Encoding
+          ↓
+    Numerical Scaling
+          ↓
+     Train/Test Split
+          ↓
+     Model Training
+          ↓
+ ┌────────┬────────┬────────┬──────────┬───────┐
+ ↓        ↓        ↓        ↓          ↓
+Logistic  Random   XGBoost  CatBoost   ANN
+Regression Forest
+ └────────┴────────┴────────┴──────────┴───────┘
+          ↓
+    Model Evaluation
+          ↓
+    Save Trained Models
+          ↓
+      predict.py
+          ↓
+   User enters 19 inputs
+          ↓
+      Preprocessing
+          ↓
+ Predictions from all 5 models
+          ↓
+     Churn / No Churn
+```
+ 
 ## Dataset Information
 
 | Attribute       | Value                        |
@@ -128,37 +168,4 @@ The Telco Customer Churn dataset was carefully preprocessed to ensure high-quali
 - The cross-validation accuracy of Logistic Regression, Random Forest, and XGBoost was close to their respective test accuracy, suggesting relatively consistent performance across the evaluation splits.
 
 
-Telco Customer Dataset
-          ↓
-   Data Preprocessing
-          ↓
-    Exploratory Data
-       Analysis
-          ↓
-    Feature Encoding
-          ↓
-    Numerical Scaling
-          ↓
-     Train/Test Split
-          ↓
-     Model Training
-          ↓
- ┌────────┬────────┬────────┬──────────┬───────┐
- ↓        ↓        ↓        ↓          ↓
-Logistic  Random   XGBoost  CatBoost   ANN
-Regression Forest
- └────────┴────────┴────────┴──────────┴───────┘
-          ↓
-    Model Evaluation
-          ↓
-    Save Trained Models
-          ↓
-      predict.py
-          ↓
-   User enters 19 inputs
-          ↓
-      Preprocessing
-          ↓
- Predictions from all 5 models
-          ↓
-     Churn / No Churn
+
