@@ -23,7 +23,7 @@ Customer_Churn_Prediction/
     ├── scaler.pkl
     ├── feature_columns.pkl
     └── ann_model.keras
-    
+```    
 ## Dataset Information
 
 | Attribute       | Value                        |
