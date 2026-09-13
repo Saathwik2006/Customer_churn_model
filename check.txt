@@ -1,0 +1,30 @@
+PS C:\Users\Saathwik Aithal\OneDrive\Desktop\churn_predictor_deployed> py predict.py
+  
+Gender (Male/Female): Male
+Senior Citizen (0/1): 0
+Partner (Yes/No): Yes
+Dependents (Yes/No): Yes
+Tenure (months): 12
+Phone Service (Yes/No): Yes
+Multiple Lines (Yes/No/No phone service): Yes
+Internet Service (DSL/Fiber optic/No): DSL
+Online Security (Yes/No/No internet service): Yes
+Online Backup (Yes/No/No internet service): Yes
+Device Protection (Yes/No/No internet service): Yes
+Tech Support (Yes/No/No internet service): Yes
+Streaming TV (Yes/No/No internet service): No
+Streaming Movies (Yes/No/No internet service): No
+Contract (Month-to-month/One year/Two year): One year
+Paperless Billing (Yes/No): No
+Payment Method (Electronic check/Mailed check/Bank transfer (automatic)/Credit card (automatic)): Mailed check
+Monthly Charges (in K): 76
+Total Charges (in K): 800
+
+========== CHURN PREDICTIONS ==========
+Logistic Regression : No Churn
+Random Forest       : No Churn
+XGBoost             : No Churn
+CatBoost            : No Churn
+ANN                 : No Churn
+
+ANN Churn Probability: 15.08 %
